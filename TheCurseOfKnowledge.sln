@@ -31,6 +31,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Blazor.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Blazor.DevExtreme", "TheCurseOfKnowledge.Blazor.DevExtreme\TheCurseOfKnowledge.Blazor.DevExtreme.csproj", "{430867B3-728E-41D2-89C0-9C1F082D7784}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C4A68D1-41A2-4BEF-8F20-503759AF6B82}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
