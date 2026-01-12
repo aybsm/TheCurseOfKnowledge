@@ -24,10 +24,15 @@ Implementasi teknis dan integrasi alat pihak ketiga.
 Microservices yang berjalan di latar belakang.
 - **Worker.DataFetcher**: Mengambil harga dari exchange dan mempublish ke RabbitMQ.
 - **Worker.Analyzer**: Mengonsumsi data dari queue untuk perhitungan teknikal.
+- **GRPC.Backbone**: The core gRPC service (Load balanced by the Proxy).
 
 ### 04. Gateways
 Pintu masuk dan keluar data untuk sisi client.
 - **SignalR.Gateway**: Melakukan broadcast harga real-time ke UI menggunakan WebSockets.
+- **TheCurseOfKnowledge.Gateway.Proxy**: (NEW) High-performance gRPC & HTTP Reverse Proxy built with **YARP**.
+    * Handles **Client-Side Load Balancing** (Round Robin).
+    * Provides **gRPC-Web** support for Browser/UI compatibility.
+    * Global **CORS Policy** (AllowAll) for Blazor/Angular integration.
 - **Ocelot.ApiGateway**: Unified entry point untuk akses API.
 
 ### 05. UI (Presentation)
@@ -44,7 +49,7 @@ Project penghubung antar service.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: .NET 8
+- **Framework**: .NET 5
 - **Communication**: gRPC (Internal), SignalR (Real-time UI)
 - **Message Broker**: RabbitMQ
 - **Database**: SQL Server with Dapper ORM
