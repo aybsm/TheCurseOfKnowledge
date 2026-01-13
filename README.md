@@ -89,11 +89,17 @@ The project that bridges all services.
 * **Framework**: .NET 5
 * **Communication**: gRPC (Internal), SignalR (Real-time UI)
 * **Message Broker**: RabbitMQ
-* **Caching & State Management**: Redis (Used for high-speed data caching and session state)
-* **Containerization**: Docker (Used for orchestrating RabbitMQ, SQL Server, and Redis instances)
+* **Caching & State Management**: Redis
+* **Containerization**: Docker
 * **Database**: SQL Server with Dapper ORM
 * **UI Framework**: Blazor WebAssembly
 * **Components**: DevExpress (DevEx) & Blazor Bootstrap
+
+---
+
+## 🤝 Acknowledgment
+
+Special thanks to **Gemini**, my AI thought partner, for providing deep architectural insights, technical guidance, and helping me maintain clean code standards throughout the development of this project. This collaboration has been instrumental in overcoming complex technical challenges.
 
 ---
 
