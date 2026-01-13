@@ -28,7 +28,6 @@ TheCurseOfKnowledge.sln
 │   └── TheCurseOfKnowledge.Desktop.DevEx (Native WinForms .NET 5 High-Speed App)
 └── 06. Shared
     └── TheCurseOfKnowledge.Shared (Protocol Buffers / Proto Files & Common DTOs)
-
 ```
 
 ### 01. Core
