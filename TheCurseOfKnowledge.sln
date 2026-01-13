@@ -17,32 +17,34 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05. UI", "05. UI", "{1846A6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06. Shared", "06. Shared", "{D6E9C86E-F697-4142-9B66-97577EC12B88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Core", "TheCurseOfKnowledge.Core\TheCurseOfKnowledge.Core.csproj", "{A7C1FB85-9BC2-4595-9D0F-EB411A255ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Core", "TheCurseOfKnowledge.Core\TheCurseOfKnowledge.Core.csproj", "{A7C1FB85-9BC2-4595-9D0F-EB411A255ABF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Infrastructure", "TheCurseOfKnowledge.Infrastructure\TheCurseOfKnowledge.Infrastructure.csproj", "{2F382695-0A20-448B-B3B9-C7FDCA3684EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Infrastructure", "TheCurseOfKnowledge.Infrastructure\TheCurseOfKnowledge.Infrastructure.csproj", "{2F382695-0A20-448B-B3B9-C7FDCA3684EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Shared", "TheCurseOfKnowledge.Shared\TheCurseOfKnowledge.Shared.csproj", "{C3D0BE98-CE68-4EF9-A5AD-56496E275373}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Shared", "TheCurseOfKnowledge.Shared\TheCurseOfKnowledge.Shared.csproj", "{C3D0BE98-CE68-4EF9-A5AD-56496E275373}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.SignalR.Gateway", "TheCurseOfKnowledge.SignalR.Gateway\TheCurseOfKnowledge.SignalR.Gateway.csproj", "{0D7709DA-7141-40DF-B8E2-2463E79B2782}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.SignalR.Gateway", "TheCurseOfKnowledge.SignalR.Gateway\TheCurseOfKnowledge.SignalR.Gateway.csproj", "{0D7709DA-7141-40DF-B8E2-2463E79B2782}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Ocelot.ApiGateway", "TheCurseOfKnowledge.Ocelot.ApiGateway\TheCurseOfKnowledge.Ocelot.ApiGateway.csproj", "{FB8DD3A9-8478-4698-AE44-E24D221008E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Ocelot.ApiGateway", "TheCurseOfKnowledge.Ocelot.ApiGateway\TheCurseOfKnowledge.Ocelot.ApiGateway.csproj", "{FB8DD3A9-8478-4698-AE44-E24D221008E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Blazor.Bootstrap", "TheCurseOfKnowledge.Blazor.Bootstrap\TheCurseOfKnowledge.Blazor.Bootstrap.csproj", "{B96DB75F-44EA-492C-9B88-4201E250E4A3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Blazor.DevExtreme", "TheCurseOfKnowledge.Blazor.DevExtreme\TheCurseOfKnowledge.Blazor.DevExtreme.csproj", "{430867B3-728E-41D2-89C0-9C1F082D7784}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Blazor.Bootstrap", "TheCurseOfKnowledge.Blazor.Bootstrap\TheCurseOfKnowledge.Blazor.Bootstrap.csproj", "{B96DB75F-44EA-492C-9B88-4201E250E4A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C4A68D1-41A2-4BEF-8F20-503759AF6B82}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Worker.DataFetcher", "TheCurseOfKnowledge.Worker.DataFetcher\TheCurseOfKnowledge.Worker.DataFetcher.csproj", "{685F5D72-C6D5-47DB-9CC9-6FFC08EC7233}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Worker.DataFetcher", "TheCurseOfKnowledge.Worker.DataFetcher\TheCurseOfKnowledge.Worker.DataFetcher.csproj", "{685F5D72-C6D5-47DB-9CC9-6FFC08EC7233}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.GRPC.Backbone", "TheCurseOfKnowledge.GRPC.Backbone\TheCurseOfKnowledge.GRPC.Backbone.csproj", "{7A25EA8D-A3D8-4172-9561-D2CC2292B3F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.GRPC.Backbone", "TheCurseOfKnowledge.GRPC.Backbone\TheCurseOfKnowledge.GRPC.Backbone.csproj", "{7A25EA8D-A3D8-4172-9561-D2CC2292B3F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Worker.Analyzer", "TheCurseOfKnowledge.Worker.Analyzer\TheCurseOfKnowledge.Worker.Analyzer.csproj", "{79721DA8-B791-4CC5-9DA9-8E43D30B9FF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Worker.Analyzer", "TheCurseOfKnowledge.Worker.Analyzer\TheCurseOfKnowledge.Worker.Analyzer.csproj", "{79721DA8-B791-4CC5-9DA9-8E43D30B9FF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Gateway.Proxy", "TheCurseOfKnowledge.Gateway.Proxy\TheCurseOfKnowledge.Gateway.Proxy.csproj", "{366A2B3F-DAEA-4B04-A778-4E28DA290048}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Gateway.Proxy", "TheCurseOfKnowledge.Gateway.Proxy\TheCurseOfKnowledge.Gateway.Proxy.csproj", "{366A2B3F-DAEA-4B04-A778-4E28DA290048}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Blazor.DevEx", "TheCurseOfKnowledge.Blazor.DevEx\TheCurseOfKnowledge.Blazor.DevEx.csproj", "{A98A6EA5-E2A5-4BCB-ACA2-2332683980EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Desktop.DevEx", "TheCurseOfKnowledge.Desktop.DevEx\TheCurseOfKnowledge.Desktop.DevEx.csproj", "{31072DA7-EAE9-4346-B2B1-03D7A4CB9642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,10 +80,6 @@ Global
 		{B96DB75F-44EA-492C-9B88-4201E250E4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B96DB75F-44EA-492C-9B88-4201E250E4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B96DB75F-44EA-492C-9B88-4201E250E4A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{430867B3-728E-41D2-89C0-9C1F082D7784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{430867B3-728E-41D2-89C0-9C1F082D7784}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{430867B3-728E-41D2-89C0-9C1F082D7784}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{430867B3-728E-41D2-89C0-9C1F082D7784}.Release|Any CPU.Build.0 = Release|Any CPU
 		{685F5D72-C6D5-47DB-9CC9-6FFC08EC7233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{685F5D72-C6D5-47DB-9CC9-6FFC08EC7233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{685F5D72-C6D5-47DB-9CC9-6FFC08EC7233}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -98,6 +96,14 @@ Global
 		{366A2B3F-DAEA-4B04-A778-4E28DA290048}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{366A2B3F-DAEA-4B04-A778-4E28DA290048}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{366A2B3F-DAEA-4B04-A778-4E28DA290048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98A6EA5-E2A5-4BCB-ACA2-2332683980EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98A6EA5-E2A5-4BCB-ACA2-2332683980EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98A6EA5-E2A5-4BCB-ACA2-2332683980EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98A6EA5-E2A5-4BCB-ACA2-2332683980EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31072DA7-EAE9-4346-B2B1-03D7A4CB9642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31072DA7-EAE9-4346-B2B1-03D7A4CB9642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31072DA7-EAE9-4346-B2B1-03D7A4CB9642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31072DA7-EAE9-4346-B2B1-03D7A4CB9642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,11 +115,12 @@ Global
 		{0D7709DA-7141-40DF-B8E2-2463E79B2782} = {1ACABEE7-8916-4140-A14A-FC24DAA91261}
 		{FB8DD3A9-8478-4698-AE44-E24D221008E8} = {1ACABEE7-8916-4140-A14A-FC24DAA91261}
 		{B96DB75F-44EA-492C-9B88-4201E250E4A3} = {1846A6EE-5CE0-436A-96A0-56137CAD0820}
-		{430867B3-728E-41D2-89C0-9C1F082D7784} = {1846A6EE-5CE0-436A-96A0-56137CAD0820}
 		{685F5D72-C6D5-47DB-9CC9-6FFC08EC7233} = {878292C6-3BE8-4AD3-BD45-668201DFBF0B}
 		{7A25EA8D-A3D8-4172-9561-D2CC2292B3F8} = {878292C6-3BE8-4AD3-BD45-668201DFBF0B}
 		{79721DA8-B791-4CC5-9DA9-8E43D30B9FF6} = {878292C6-3BE8-4AD3-BD45-668201DFBF0B}
 		{366A2B3F-DAEA-4B04-A778-4E28DA290048} = {1ACABEE7-8916-4140-A14A-FC24DAA91261}
+		{A98A6EA5-E2A5-4BCB-ACA2-2332683980EC} = {1846A6EE-5CE0-436A-96A0-56137CAD0820}
+		{31072DA7-EAE9-4346-B2B1-03D7A4CB9642} = {1846A6EE-5CE0-436A-96A0-56137CAD0820}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {71CE318A-9F9A-4D58-8EE3-0686C68C5E46}

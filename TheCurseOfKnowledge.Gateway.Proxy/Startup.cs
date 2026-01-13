@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Yarp.ReverseProxy;
 using Microsoft.AspNetCore.Cors;
+using TheCurseOfKnowledge.Gateway.Proxy.Repositories;
+using Serilog;
 
 namespace TheCurseOfKnowledge.Gateway.Proxy
 {
@@ -60,6 +62,9 @@ namespace TheCurseOfKnowledge.Gateway.Proxy
             app.UseRouting();
 
             app.UseGrpcWeb(new GrpcWebOptions { DefaultEnabled = true });
+
+            app.UseMiddleware<RequestLoggingMiddleware>();
+            app.UseSerilogRequestLogging();
             app.UseCors("AllowAll");
 
             app.UseAuthorization();

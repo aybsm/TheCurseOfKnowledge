@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "TheCurseOfKnowledge.Blazor.DevExtreme": {
+    "TheCurseOfKnowledge.Blazor.DevEx": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -4,7 +4,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace TheCurseOfKnowledge.Blazor.DevExtreme
+namespace TheCurseOfKnowledge.Blazor.DevEx
 {
     public class Program
     {

@@ -1,12 +1,33 @@
 ﻿# 🪙 TheCurseOfKnowledge
 
-**TheCurseOfKnowledge** adalah platform monitoring harga cryptocurrency real-time yang dibangun dengan arsitektur modern (Clean Architecture) untuk menjamin skalabilitas dan kemudahan pemeliharaan. Proyek ini menangani streaming data harga dalam volume tinggi menggunakan gRPC dan SignalR dengan RabbitMQ sebagai message broker.
+**TheCurseOfKnowledge** is a high-performance cryptocurrency real-time monitoring platform built with **Clean Architecture** (Onion Architecture). The system is designed for high scalability and low-latency data streaming, utilizing **gRPC**, **SignalR**, and **RabbitMQ**.
 
 ---
 
 ## 🏗️ Architecture & Structure
 
-Proyek ini menerapkan **Clean Architecture** (Onion Architecture) untuk memisahkan logika bisnis dari detail infrastruktur. Struktur Solution dibagi menjadi beberapa layer logis:
+The solution is organized into logical layers to ensure a strict **Separation of Concerns**.
+
+```text
+TheCurseOfKnowledge.sln
+├── 01. Core
+│   └── TheCurseOfKnowledge.Core (Business Logic, Entities, & Technical Calculators)
+├── 02. Infrastructure
+│   └── TheCurseOfKnowledge.Infrastructure (Dapper ORM, RabbitMQ Integration, DB Access)
+├── 03. Services (Background Engines)
+│   ├── TheCurseOfKnowledge.Worker.DataFetcher (Binance API Ingestion)
+│   ├── TheCurseOfKnowledge.Worker.Analyzer (Technical Indicators Engine)
+│   └── TheCurseOfKnowledge.GRPC.Backbone (Core gRPC Service - Load Balanced)
+├── 04. Gateways
+│   ├── TheCurseOfKnowledge.SignalR.Gateway (Real-time Broadcast to WebSockets)
+│   ├── TheCurseOfKnowledge.Ocelot.ApiGateway (Unified REST Entry Point)
+│   └── TheCurseOfKnowledge.Gateway.Proxy (YARP gRPC & HTTP Reverse Proxy)
+├── 05. UI (Presentation Layer)
+│   ├── TheCurseOfKnowledge.Blazor.Bootstrap (Light-weight Web UI)
+│   ├── TheCurseOfKnowledge.Blazor.DevEx (Premium Web Dashboard via DevExpress)
+│   └── TheCurseOfKnowledge.Desktop.DevEx (Native WinForms .NET 5 High-Speed App)
+└── 06. Shared
+    └── TheCurseOfKnowledge.Shared (Protocol Buffers / Proto Files & Common DTOs)
 
 ### 01. Core
 Jantung dari aplikasi. Berisi logika bisnis murni tanpa ketergantungan pada library eksternal atau database.
@@ -38,7 +59,8 @@ Pintu masuk dan keluar data untuk sisi client.
 ### 05. UI (Presentation)
 Frontend berbasis **Blazor** untuk visualisasi data:
 - **Blazor.Bootstrap**: Dashboard menggunakan komponen Bootstrap.
-- **Blazor.DevExtreme**: Dashboard premium dengan visualisasi chart data-intensive.
+- **Blazor.DevEx**: Dashboard premium dengan visualisasi chart data-intensive.
+- **Desktop.DevEx**: (NEW) Native Windows Desktop Application.
 
 ### 06. Shared
 Project penghubung antar service.
