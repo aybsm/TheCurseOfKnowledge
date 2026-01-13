@@ -1,11 +1,4 @@
-﻿Siap, Bor! Mari kita ubah seluruh **README.md** kamu menjadi **Full English** supaya terlihat sangat profesional dan sesuai dengan target kamu untuk lancar berbahasa Inggris di tahun 2026.
-
-Berikut adalah versi bahasa Inggris penuh berdasarkan file yang kamu kirim:
-
----
-
-```markdown
-# 🪙 TheCurseOfKnowledge
+﻿# 🪙 TheCurseOfKnowledge
 
 **TheCurseOfKnowledge** is a high-performance cryptocurrency real-time monitoring platform built with **Clean Architecture** (Onion Architecture). The system is designed for high scalability and low-latency data streaming, utilizing **gRPC**, **SignalR**, and **RabbitMQ**.
 
@@ -113,5 +106,3 @@ The project that bridges all services.
 ---
 
 *"Junior developers write code that works. Senior developers write code that can be maintained by others."*
-
-```
