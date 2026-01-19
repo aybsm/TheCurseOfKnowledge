@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TheCurseOfKnowledge.Core.Extensions;
-using TheCurseOfKnowledge.Core.Interfaces;
+using TheCurseOfKnowledge.Core.Interfaces.Messaging;
 using TheCurseOfKnowledge.Infrastructure.Configurations;
 
 namespace TheCurseOfKnowledge.Infrastructure.Messaging
 {
-    public class RabbitMQConsumer : IRabbitMQConsumer, IDisposable
+    public class RabbitMQConsumer : IQueueConsumer, IDisposable
     {
         private readonly RabbitMQConfigModel __oOptions;
         private readonly ObjectPool<IModel> __oObjectpool;

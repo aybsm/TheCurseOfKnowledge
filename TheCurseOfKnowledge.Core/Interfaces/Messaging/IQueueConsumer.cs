@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TheCurseOfKnowledge.Core.Interfaces
+namespace TheCurseOfKnowledge.Core.Interfaces.Messaging
 {
-    public interface IRabbitMQConsumer
+    public interface IQueueConsumer
     {
         string QueueName { get; }
         Task InitializeAsync(Dictionary<string, object> arguments, CancellationToken token);

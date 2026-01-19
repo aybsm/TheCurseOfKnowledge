@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace TheCurseOfKnowledge.Core.Interfaces
+namespace TheCurseOfKnowledge.Core.Interfaces.Messaging
 {
-    public interface IRabbitMQPublisher
+    public interface IQueuePublisher
     {
         Task PublishAsync<TModel>(TModel payload, string exchangename, string exchangetype, string routekey, Dictionary<string, object> arguments)
             where TModel : class;

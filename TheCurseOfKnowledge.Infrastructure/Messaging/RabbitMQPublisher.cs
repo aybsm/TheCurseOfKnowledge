@@ -8,11 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheCurseOfKnowledge.Core.Extensions;
-using TheCurseOfKnowledge.Core.Interfaces;
+using TheCurseOfKnowledge.Core.Interfaces.Messaging;
 
 namespace TheCurseOfKnowledge.Infrastructure.Messaging
 {
-    public class RabbitMQPublisher : IRabbitMQPublisher
+    public class RabbitMQPublisher : IQueuePublisher
     {
         private readonly ObjectPool<IModel> __objectpool;
 
