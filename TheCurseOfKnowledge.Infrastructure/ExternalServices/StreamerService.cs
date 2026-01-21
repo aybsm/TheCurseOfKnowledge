@@ -30,7 +30,7 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                 await _ws.ConnectAsync(new Uri(url), _cts.Token);
             }
             catch (Exception exc)
-            { exc.GetDeepException(); }
+            { throw exc.GetDeepException(); }
         }
         public async Task ListenAsync<TModel>(Func<TModel, Task> listenhandler)
             => await ListenAsync(async (json) =>
@@ -41,7 +41,7 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                     await listenhandler(model);
                 }
                 catch (Exception exc)
-                { exc.GetDeepException(); }
+                { throw exc.GetDeepException(); }
             });
         public async Task ListenAsync(Func<string, Task> listenhandler)
         {
@@ -58,7 +58,7 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                 }
             }
             catch (Exception exc)
-            { exc.GetDeepException(); }
+            { throw exc.GetDeepException(); }
             finally
             {
                 ArrayPool<byte>.Shared.Return(buffer);
@@ -74,7 +74,7 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                 await _ws.SendAsync(sendBuffer, WebSocketMessageType.Text, true, _cts.Token);
             }
             catch (Exception exc)
-            { exc.GetDeepException(); }
+            { throw exc.GetDeepException(); }
         }
         public async Task DisconnectAsync()
         {
@@ -85,7 +85,7 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                 _cts?.Cancel();
             }
             catch (Exception exc)
-            { exc.GetDeepException(); }
+            { throw exc.GetDeepException(); }
         }
         public void Dispose()
             => _cts?.Dispose();
