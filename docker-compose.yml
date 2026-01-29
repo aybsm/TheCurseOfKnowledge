@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  # --- DATABASE ---
+  mssqlserver.thecurseofknowledge:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_container
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrongPassword123!
+    ports:
+      - "1433:1433"
+    networks:
+      thecurse_network:
+        aliases:
+          - mssqlserver.thecurseofknowledge
+
+  # --- MESSAGE BROKER ---
+  rabbitmq.thecurseofknowledge:
+    image: rabbitmq:3-management
+    container_name: rabbit_container
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      thecurse_network:
+        aliases:
+          - rabbitmq.thecurseofknowledge
+
+  # --- CACHE ---
+  redis.thecurseofknowledge:
+    image: redis:alpine
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+    networks:
+      thecurse_network:
+        aliases:
+          - redis.thecurseofknowledge
+
+  # --- MONITORING ---
+  prometheus.thecurseofknowledge:
+    image: prom/prometheus:latest
+    container_name: prometheus_container
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      thecurse_network:
+        aliases:
+          - prometheus.thecurseofknowledge
+
+  grafana.thecurseofknowledge:
+    image: grafana/grafana:latest
+    container_name: grafana_container
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      thecurse_network:
+        aliases:
+          - grafana.thecurseofknowledge
+
+networks:
+  thecurse_network:
+    name: thecurse_network
+    driver: bridge

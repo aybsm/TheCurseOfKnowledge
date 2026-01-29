@@ -31,6 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Blazor.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7C4A68D1-41A2-4BEF-8F20-503759AF6B82}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		docker-compose.yml = docker-compose.yml
+		prometheus.yml = prometheus.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -42,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Worker.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Gateway.Proxy", "TheCurseOfKnowledge.Gateway.Proxy\TheCurseOfKnowledge.Gateway.Proxy.csproj", "{366A2B3F-DAEA-4B04-A778-4E28DA290048}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Blazor.DevEx", "TheCurseOfKnowledge.Blazor.DevEx\TheCurseOfKnowledge.Blazor.DevEx.csproj", "{A98A6EA5-E2A5-4BCB-ACA2-2332683980EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheCurseOfKnowledge.Blazor.DevEx", "TheCurseOfKnowledge.Blazor.DevEx\TheCurseOfKnowledge.Blazor.DevEx.csproj", "{A98A6EA5-E2A5-4BCB-ACA2-2332683980EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheCurseOfKnowledge.Desktop.DevEx", "TheCurseOfKnowledge.Desktop.DevEx\TheCurseOfKnowledge.Desktop.DevEx.csproj", "{31072DA7-EAE9-4346-B2B1-03D7A4CB9642}"
 EndProject

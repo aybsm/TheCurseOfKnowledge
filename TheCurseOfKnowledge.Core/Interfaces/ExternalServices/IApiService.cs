@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TheCurseOfKnowledge.Core.Models;
@@ -12,7 +9,6 @@ namespace TheCurseOfKnowledge.Core.Interfaces.ExternalServices
 {
     public interface IApiService
     {
-        AuthenticationHeaderValue Authentication { get; set; }
         Task<ResultModel<TResult>> GetAsync<TResult>(string url);
         Task<ResultModel<TResult>> GetAsync<TResult>(string url, CancellationToken token);
         Task<ResultModel<TResult>> PostAsync<TModel, TResult>(string url, Dictionary<string, string> headers, TModel payload);

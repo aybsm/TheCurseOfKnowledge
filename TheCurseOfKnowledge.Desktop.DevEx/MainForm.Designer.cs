@@ -33,8 +33,7 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinRibbonGalleryBarItem = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.barSubItemNavigation = new DevExpress.XtraBars.BarSubItem();
-            this.employeesBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
-            this.customersBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.foraddiconBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.skinDropDownButtonItem = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.skinPaletteRibbonGalleryBarItem = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
             this.ribbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -46,8 +45,7 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
             this.dockPanel_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.mainAccordionGroup = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.employeesAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.customersAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.foraddiconAccordionControlElement = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.tabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -67,8 +65,7 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
             this.ribbonControl.SearchEditItem,
             this.skinRibbonGalleryBarItem,
             this.barSubItemNavigation,
-            this.employeesBarButtonItem,
-            this.customersBarButtonItem,
+            this.foraddiconBarButtonItem,
             this.skinDropDownButtonItem,
             this.skinPaletteRibbonGalleryBarItem});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
@@ -94,23 +91,14 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
             this.barSubItemNavigation.Id = 15;
             this.barSubItemNavigation.ImageOptions.ImageUri.Uri = "NavigationBar";
             this.barSubItemNavigation.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.employeesBarButtonItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.customersBarButtonItem)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.foraddiconBarButtonItem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.barSubItemNavigation.Name = "barSubItemNavigation";
             // 
-            // employeesBarButtonItem
+            // foraddiconBarButtonItem
             // 
-            this.employeesBarButtonItem.Caption = "Employees";
-            this.employeesBarButtonItem.Id = 46;
-            this.employeesBarButtonItem.Name = "employeesBarButtonItem";
-            this.employeesBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonNavigation_ItemClick);
-            // 
-            // customersBarButtonItem
-            // 
-            this.customersBarButtonItem.Caption = "Customers";
-            this.customersBarButtonItem.Id = 47;
-            this.customersBarButtonItem.Name = "customersBarButtonItem";
-            this.customersBarButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonNavigation_ItemClick);
+            this.foraddiconBarButtonItem.Caption = "For Add Icon";
+            this.foraddiconBarButtonItem.Id = 46;
+            this.foraddiconBarButtonItem.Name = "foraddiconBarButtonItem";
             // 
             // skinDropDownButtonItem
             // 
@@ -198,33 +186,25 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.Size = new System.Drawing.Size(193, 379);
             this.accordionControl.TabIndex = 0;
-            this.accordionControl.SelectedElementChanged += new DevExpress.XtraBars.Navigation.SelectedElementChangedEventHandler(this.accordionControl_SelectedElementChanged);
             // 
             // mainAccordionGroup
             // 
             this.mainAccordionGroup.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.employeesAccordionControlElement,
-            this.customersAccordionControlElement});
+            this.foraddiconAccordionControlElement});
             this.mainAccordionGroup.Expanded = true;
             this.mainAccordionGroup.HeaderVisible = false;
             this.mainAccordionGroup.Name = "mainAccordionGroup";
             this.mainAccordionGroup.Text = "mainGroup";
             // 
-            // employeesAccordionControlElement
+            // foraddiconAccordionControlElement
             // 
-            this.employeesAccordionControlElement.Name = "employeesAccordionControlElement";
-            this.employeesAccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.employeesAccordionControlElement.Text = "Employees";
-            // 
-            // customersAccordionControlElement
-            // 
-            this.customersAccordionControlElement.Name = "customersAccordionControlElement";
-            this.customersAccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.customersAccordionControlElement.Text = "Customers";
+            this.foraddiconAccordionControlElement.ImageOptions.SvgImage = global::TheCurseOfKnowledge.Desktop.DevEx.Properties.Resources.charttype_swiftplot;
+            this.foraddiconAccordionControlElement.Name = "foraddiconAccordionControlElement";
+            this.foraddiconAccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.foraddiconAccordionControlElement.Text = "For Add Icon";
             // 
             // tabbedView
             // 
-            this.tabbedView.DocumentClosed += new DevExpress.XtraBars.Docking2010.Views.DocumentEventHandler(this.tabbedView_DocumentClosed);
             // 
             // documentManager
             // 
@@ -270,11 +250,9 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel_Container;
         private DevExpress.XtraBars.Navigation.AccordionControl accordionControl;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupNavigation;
-        private DevExpress.XtraBars.BarButtonItem employeesBarButtonItem;
-        private DevExpress.XtraBars.BarButtonItem customersBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem foraddiconBarButtonItem;
         private DevExpress.XtraBars.BarSubItem barSubItemNavigation;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement employeesAccordionControlElement;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement customersAccordionControlElement;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement foraddiconAccordionControlElement;
         private DevExpress.XtraBars.Navigation.AccordionControlElement mainAccordionGroup;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;

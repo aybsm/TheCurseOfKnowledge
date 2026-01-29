@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TheCurseOfKnowledge.Core.Interfaces.Authentications;
 using TheCurseOfKnowledge.Core.Interfaces.ExternalServices;
 using TheCurseOfKnowledge.Core.Models;
 
@@ -16,16 +17,11 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
     public class ApiService : IApiService
     {
         readonly HttpClient __client;
-        AuthenticationHeaderValue __authentication;
-        public ApiService(HttpClient client)
-            => __client = client;
-        public AuthenticationHeaderValue Authentication
+        IAuthenticationProvider __authentication;
+        public ApiService(HttpClient client, IAuthenticationProvider authentication = default(IAuthenticationProvider))
         {
-            get { return __authentication; }
-            set
-            {
-                __authentication = value;
-            }
+            __client = client;
+            __authentication = authentication;
         }
         public async Task<ResultModel<TResult>> GetAsync<TResult>(string url)
             => await GetAsync<TResult>(url, default(CancellationToken));
@@ -40,8 +36,8 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                     RequestUri = new Uri(url),
                 })
                 {
-                    if (__authentication != null)
-                        request.Headers.Authorization = __authentication;
+                    if (__authentication != default(IAuthenticationProvider))
+                        request.Headers.Authorization = await __authentication.GetTokenAsync();
                     using (var response = await __client.SendAsync(request, token))
                     {
                         var result = new StringBuilder(await response.Content.ReadAsStringAsync());
@@ -84,8 +80,8 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                         mediaType: "application/json"),
                 })
                 {
-                    if (__authentication != null)
-                        request.Headers.Authorization = __authentication;
+                    if (__authentication != default(IAuthenticationProvider))
+                        request.Headers.Authorization = await __authentication.GetTokenAsync();
                     if (headers?.Count > 0)
                         foreach (var map in headers)
                             request.Headers.Add(map.Key, map.Value);
@@ -133,8 +129,8 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                         mediaType: "application/json"),
                 })
                 {
-                    if (__authentication != null)
-                        request.Headers.Authorization = __authentication;
+                    if (__authentication != default(IAuthenticationProvider))
+                        request.Headers.Authorization = await __authentication.GetTokenAsync();
                     if (headers?.Count > 0)
                         foreach (var map in headers)
                             request.Headers.Add(map.Key, map.Value);
@@ -176,8 +172,8 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                     Content = content,
                 })
                 {
-                    if (__authentication != null)
-                        request.Headers.Authorization = __authentication;
+                    if (__authentication != default(IAuthenticationProvider))
+                        request.Headers.Authorization = await __authentication.GetTokenAsync();
                     if (headers?.Count > 0)
                         foreach (var map in headers)
                             request.Headers.Add(map.Key, map.Value);
@@ -222,8 +218,8 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                         mediaType: "application/json"),
                 })
                 {
-                    if (__authentication != null)
-                        request.Headers.Authorization = __authentication;
+                    if (__authentication != default(IAuthenticationProvider))
+                        request.Headers.Authorization = await __authentication.GetTokenAsync();
                     if (headers?.Count > 0)
                         foreach (var map in headers)
                             request.Headers.Add(map.Key, map.Value);
@@ -271,8 +267,8 @@ namespace TheCurseOfKnowledge.Infrastructure.ExternalServices
                         mediaType: "application/json"),
                 })
                 {
-                    if (__authentication != null)
-                        request.Headers.Authorization = __authentication;
+                    if (__authentication != default(IAuthenticationProvider))
+                        request.Headers.Authorization = await __authentication.GetTokenAsync();
                     if (headers?.Count > 0)
                         foreach (var map in headers)
                             request.Headers.Add(map.Key, map.Value);
