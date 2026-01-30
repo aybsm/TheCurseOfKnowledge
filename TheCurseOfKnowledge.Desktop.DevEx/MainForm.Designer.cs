@@ -203,9 +203,6 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
             this.foraddiconAccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.foraddiconAccordionControlElement.Text = "For Add Icon";
             // 
-            // tabbedView
-            // 
-            // 
             // documentManager
             // 
             this.documentManager.ContainerControl = this;

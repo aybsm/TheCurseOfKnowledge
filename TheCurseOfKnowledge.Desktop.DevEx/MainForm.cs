@@ -49,13 +49,16 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
                 .EventToCommand(z0 => z0.EventTriggerHandlerAsync, HandlerAccordionControlSelectedElementChanged());
 
             fluent.WithEvent<ItemClickEventArgs>(foraddiconBarButtonItem, "ItemClick")
-                .EventToCommand(z0 => z0.EventTriggerHandlerAsync, HandlerBarButtonNavigationItemClick());
+                .EventToCommand(z0 => z0.EventTriggerHandler, HandlerBarButtonNavigationItemClick());
 
             fluent.WithEvent<DocumentEventArgs>(tabbedView, "DocumentAdded")
                 .EventToCommand(z0 => z0.EventTriggerHandler, HandlerTabbedViewDocumentAdded());
 
+            fluent.WithEvent<DocumentCancelEventArgs>(tabbedView, "DocumentClosing")
+                .EventToCommand(z0 => z0.EventTriggerHandler, HandlerTabbedViewDocumentClosing());
+
             fluent.WithEvent<DocumentEventArgs>(tabbedView, "DocumentClosed")
-                .EventToCommand(z0 => z0.EventTriggerHandlerAsync, HandlerTabbedViewDocumentClosed());
+                .EventToCommand(z0 => z0.EventTriggerHandler, HandlerTabbedViewDocumentClosed());
         }
         private Action<BindingList<ViewControlAttribute>> BindNavigationMenus()
             => new Action<BindingList<ViewControlAttribute>>((menus)
@@ -74,53 +77,52 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
             });
         private Func<SelectedElementChangedEventArgs, Func<Task>> HandlerAccordionControlSelectedElementChanged()
             => new Func<SelectedElementChangedEventArgs, Func<Task>>((e)
-                => new Func<Task>(() =>
+                => new Func<Task>(()
+                    =>
                 {
                     if (e.Element == null) return Task.CompletedTask;
-                    var docs = tabbedView.Documents.FirstOrDefault(first => first.Caption == e.Element.Text);
+                    var docs = tabbedView.Documents.FirstOrDefault(first => $"{first.Control.Tag}" == $"{e.Element.Tag}");
                     if (docs == null)
                     {
-                        var usercontrol = _services.GetRequiredKeyedService<XtraUserControl>((string)e.Element.Tag);
+                        var usercontrol = _services.GetRequiredKeyedService<XtraUserControl>($"{e.Element.Tag}");
                         usercontrol.Name = $"{e.Element.Tag}_xtrausercontrol";
                         usercontrol.Text = e.Element.Text;
                         usercontrol.Dock = DockStyle.Fill;
+                        usercontrol.Tag = $"{e.Element.Tag}";
                         docs = tabbedView.AddDocument(usercontrol);
+                        docs.Tag = $"{e.Element.Tag}";
                     }
                     tabbedView.ActivateDocument(docs.Control);
                     return Task.CompletedTask;
                 }));
-        private Func<ItemClickEventArgs, Func<Task>> HandlerBarButtonNavigationItemClick()
-            => new Func<ItemClickEventArgs, Func<Task>>((e)
-                => new Func<Task>(() =>
-                {
-                    accordionControl.SelectedElement = mainAccordionGroup.Elements.FirstOrDefault(first => first.Text == e.Item.Caption);
-                    return Task.CompletedTask;
-                }));
+        private Func<ItemClickEventArgs, Action> HandlerBarButtonNavigationItemClick()
+            => new Func<ItemClickEventArgs, Action>((e)
+                => new Action(() => accordionControl.SelectedElement = mainAccordionGroup.Elements.FirstOrDefault(first => $"{first.Tag}" == $"{e.Item.Tag}")));
         private Func<DocumentEventArgs, Action> HandlerTabbedViewDocumentAdded()
             => new Func<DocumentEventArgs, Action>((e)
-                => new Action(() =>
+                => new Action(()
+                    =>
                 {
-                    if (barSubItemNavigation.ItemLinks.Any(any => any.Caption == e.Document.Caption))
+                    if (barSubItemNavigation.ItemLinks.Any(any => $"{any.Item.Tag}" == $"{e.Document.Control.Tag}"))
                         return;
-                    var new_button_link = new BarButtonItem() { Caption = e.Document.Caption, };
+                    var new_button_link = new BarButtonItem() { Caption = e.Document.Caption, Tag = $"{e.Document.Control.Tag}", };
                     new_button_link.ImageOptions.SvgImage = mainAccordionGroup.Elements
-                       .FirstOrDefault(first => first.Text == e.Document.Caption)?
-                               .ImageOptions.SvgImage;
-                    new_button_link.ItemClick += new ItemClickEventHandler(async (sender, ice)
-                        => await HandlerBarButtonNavigationItemClick().Invoke(ice).Invoke());
+                       .FirstOrDefault(first => $"{first.Tag}" == $"{e.Document.Control.Tag}")?
+                       .ImageOptions.SvgImage;
+                    new_button_link.ItemClick += new ItemClickEventHandler((sender, ice)
+                        => HandlerBarButtonNavigationItemClick().Invoke(ice).Invoke());
                     barSubItemNavigation.AddItem(new_button_link);
                 }));
-        private Func<DocumentEventArgs, Func<Task>> HandlerTabbedViewDocumentClosed()
-            => new Func<DocumentEventArgs, Func<Task>>((e)
-                => new Func<Task>(() =>
-                {
-                    accordionControl.SelectedElement = tabbedView.Documents.Any()
-                        ? mainAccordionGroup.Elements.FirstOrDefault(first => first.Text == tabbedView.ActiveDocument?.Caption)
-                        : null;
-                    var barlink = barSubItemNavigation.ItemLinks.FirstOrDefault(first => first.Caption == e.Document.Caption);
-                    if (barlink != null)
-                        barSubItemNavigation.RemoveLink(barlink);
-                    return Task.CompletedTask;
-                }));
+        private Func<DocumentEventArgs, Action> HandlerTabbedViewDocumentClosed()
+            => new Func<DocumentEventArgs, Action>((e)
+                => new Action(()
+                    => accordionControl.SelectedElement = tabbedView.Documents.Any()
+                        ? mainAccordionGroup.Elements.FirstOrDefault(first => $"{first.Tag}" == $"{tabbedView.ActiveDocument?.Control?.Tag}")
+                        : null
+                ));
+        private Func<DocumentCancelEventArgs, Action> HandlerTabbedViewDocumentClosing()
+            => new Func<DocumentCancelEventArgs, Action>((e)
+                => new Action(()
+                    => barSubItemNavigation.RemoveLink(barSubItemNavigation.ItemLinks.FirstOrDefault(first => $"{first.Item.Tag}" == $"{e.Document?.Control?.Tag}"))));
     }
 }
