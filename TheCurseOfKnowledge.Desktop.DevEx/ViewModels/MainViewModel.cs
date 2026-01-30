@@ -18,12 +18,8 @@ namespace TheCurseOfKnowledge.Desktop.DevEx.ViewModels
 
         public virtual BindingList<ViewControlAttribute> NavigationMenus { get; protected set; }
 
-        //public async Task EventTriggerHandlerAsync(Func<Task> handler)
-        //    => await handler();
         public void EventTriggerHandler(Action action)
             => action();
-        public void EventTriggerHandler<TEvent>(Action<TEvent> action, TEvent args)
-            => action.Invoke(args);
         public async void EventTriggerHandlerAsync(Func<Task> action)
             => await action();
         public async Task InitializeAsync()

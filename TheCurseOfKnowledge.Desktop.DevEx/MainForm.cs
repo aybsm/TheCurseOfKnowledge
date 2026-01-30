@@ -26,14 +26,14 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         readonly IServiceProvider _services;
-        readonly MVVMContext _mvvm;
+        //readonly MVVMContext _mvvm;
         public MainForm(IServiceProvider service)
         {
             _services = service;
             InitializeComponent();
 
             MVVMContext.RegisterFlyoutMessageBoxService();
-            _mvvm = new MVVMContext();
+            var _mvvm = new MVVMContext();
             _mvvm.ContainerControl = this;
             _mvvm.ViewModelType = typeof(MainViewModel);
             //if (!_mvvm.IsDesignMode)
@@ -43,7 +43,7 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
             var fluent = _mvvm.OfType<MainViewModel>();
             fluent.WithEvent(this, nameof(this.Load))
                 .EventToCommand(z0 => z0.InitializeAsync);
-            fluent.SetTrigger(vm => vm.NavigationMenus, BindNavigationMenus);
+            fluent.SetTrigger(vm => vm.NavigationMenus, BindNavigationMenus());
 
             fluent.WithEvent<SelectedElementChangedEventArgs>(accordionControl, "SelectedElementChanged")
                 .EventToCommand(z0 => z0.EventTriggerHandlerAsync, HandlerAccordionControlSelectedElementChanged());
@@ -52,28 +52,26 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
                 .EventToCommand(z0 => z0.EventTriggerHandlerAsync, HandlerBarButtonNavigationItemClick());
 
             fluent.WithEvent<DocumentEventArgs>(tabbedView, "DocumentAdded")
-                .EventToCommand(z0 => z0.EventTriggerHandler, (DocumentEventArgs e) => new Action(() => HandlerTabbedviewDocumentAdded().Invoke(e)));
+                .EventToCommand(z0 => z0.EventTriggerHandler, HandlerTabbedViewDocumentAdded());
 
             fluent.WithEvent<DocumentEventArgs>(tabbedView, "DocumentClosed")
-                .EventToCommand(z0 => z0.EventTriggerHandlerAsync, HandlerTabbedviewDocumentClosed());
+                .EventToCommand(z0 => z0.EventTriggerHandlerAsync, HandlerTabbedViewDocumentClosed());
         }
-        void barButtonNavigation_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            accordionControl.SelectedElement = mainAccordionGroup.Elements.FirstOrDefault(first => first.Text == e.Item.Caption);
-        }
-        private void BindNavigationMenus(BindingList<ViewControlAttribute> menus)
-        {
-            barSubItemNavigation.ItemLinks.Clear();
-            mainAccordionGroup.Elements.Clear();
-            foreach (var menu in menus.Where(wh => wh.Active).OrderBy(ob => ob.Index))
+        private Action<BindingList<ViewControlAttribute>> BindNavigationMenus()
+            => new Action<BindingList<ViewControlAttribute>>((menus)
+                =>
             {
-                var new_menu = mainAccordionGroup.Elements.Add();
-                new_menu.Text = menu.Title;
-                new_menu.ImageOptions.SvgImage = (SvgImage)global::TheCurseOfKnowledge.Desktop.DevEx.Properties.Resources.ResourceManager.GetObject(menu.Icon);
-                new_menu.Style = ElementStyle.Item;
-                new_menu.Tag = menu.Key;
-            }
-        }
+                barSubItemNavigation.ItemLinks.Clear();
+                mainAccordionGroup.Elements.Clear();
+                foreach (var menu in menus.Where(wh => wh.Active).OrderBy(ob => ob.Index))
+                {
+                    var new_menu = mainAccordionGroup.Elements.Add();
+                    new_menu.Text = menu.Title;
+                    new_menu.ImageOptions.SvgImage = (SvgImage)global::TheCurseOfKnowledge.Desktop.DevEx.Properties.Resources.ResourceManager.GetObject(menu.Icon);
+                    new_menu.Style = ElementStyle.Item;
+                    new_menu.Tag = menu.Key;
+                }
+            });
         private Func<SelectedElementChangedEventArgs, Func<Task>> HandlerAccordionControlSelectedElementChanged()
             => new Func<SelectedElementChangedEventArgs, Func<Task>>((e)
                 => new Func<Task>(() =>
@@ -98,19 +96,21 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
                     accordionControl.SelectedElement = mainAccordionGroup.Elements.FirstOrDefault(first => first.Text == e.Item.Caption);
                     return Task.CompletedTask;
                 }));
-        private Action<DocumentEventArgs> HandlerTabbedviewDocumentAdded()
-            => new Action<DocumentEventArgs>((e) =>
-            {
-                if (barSubItemNavigation.ItemLinks.Any(any => any.Caption == e.Document.Caption))
-                    return;
-                var new_button_link = new BarButtonItem() { Caption = e.Document.Caption, };
-                new_button_link.ImageOptions.SvgImage = mainAccordionGroup.Elements
-                   .FirstOrDefault(first => first.Text == e.Document.Caption)?
-                           .ImageOptions.SvgImage;
-                new_button_link.ItemClick += barButtonNavigation_ItemClick;
-                barSubItemNavigation.AddItem(new_button_link);
-            });
-        private Func<DocumentEventArgs, Func<Task>> HandlerTabbedviewDocumentClosed()
+        private Func<DocumentEventArgs, Action> HandlerTabbedViewDocumentAdded()
+            => new Func<DocumentEventArgs, Action>((e)
+                => new Action(() =>
+                {
+                    if (barSubItemNavigation.ItemLinks.Any(any => any.Caption == e.Document.Caption))
+                        return;
+                    var new_button_link = new BarButtonItem() { Caption = e.Document.Caption, };
+                    new_button_link.ImageOptions.SvgImage = mainAccordionGroup.Elements
+                       .FirstOrDefault(first => first.Text == e.Document.Caption)?
+                               .ImageOptions.SvgImage;
+                    new_button_link.ItemClick += new ItemClickEventHandler(async (sender, ice)
+                        => await HandlerBarButtonNavigationItemClick().Invoke(ice).Invoke());
+                    barSubItemNavigation.AddItem(new_button_link);
+                }));
+        private Func<DocumentEventArgs, Func<Task>> HandlerTabbedViewDocumentClosed()
             => new Func<DocumentEventArgs, Func<Task>>((e)
                 => new Func<Task>(() =>
                 {
@@ -122,7 +122,5 @@ namespace TheCurseOfKnowledge.Desktop.DevEx
                         barSubItemNavigation.RemoveLink(barlink);
                     return Task.CompletedTask;
                 }));
-        private void tabbedView_DocumentAdded(object sender, DocumentEventArgs e)
-            => HandlerTabbedviewDocumentAdded().Invoke(e);
     }
 }
